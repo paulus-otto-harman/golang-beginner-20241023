@@ -37,9 +37,13 @@ func navigate(parentCtx context.Context, sessionTimeout int) {
 	for {
 		ClearScreen()
 		fmt.Println("Menu")
+		fmt.Println("[1]Daftar Product")
+		fmt.Println("[2]Keranjang")
+		fmt.Println("[3]Checkout")
+
 		select {
 		case <-ctx.Done():
-			fmt.Println("timeout")
+			fmt.Println("Sisa Waktu Belanja Anda Telah Habis, Tekan Enter Untuk Login Kembali")
 			var wait string
 			fmt.Scanln(&wait)
 			return
