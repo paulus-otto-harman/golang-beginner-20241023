@@ -25,12 +25,12 @@ func useApp(parentCtx context.Context, sessionTimeout int) {
 		fmt.Scanln(&username)
 		fmt.Print("password")
 		fmt.Scanln(&password)
-		navigate(parentCtx, sessionTimeout)
+		app(parentCtx, sessionTimeout)
 
 	}
 }
 
-func navigate(parentCtx context.Context, sessionTimeout int) {
+func app(parentCtx context.Context, sessionTimeout int) {
 	ctx, cancel := context.WithTimeout(parentCtx, time.Duration(sessionTimeout)*time.Second)
 	defer cancel()
 
@@ -43,9 +43,7 @@ func navigate(parentCtx context.Context, sessionTimeout int) {
 
 		select {
 		case <-ctx.Done():
-			fmt.Println("Sisa Waktu Belanja Anda Telah Habis, Tekan Enter Untuk Login Kembali")
-			var wait string
-			fmt.Scanln(&wait)
+			Wait("Sisa Waktu Belanja Anda Telah Habis, Tekan Enter Untuk Login Kembali")
 			return
 		}
 	}
